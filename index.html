@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f7d9d9, #fff0f5);
+    cursor: pointer;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Container for letter and button */
+.container {
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Love letter styling */
+.letter {
+    background: rgba(255,255,255,0.85);
+    padding: 25px;
+    border-radius: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Button styling */
+button {
+    background: #b76e79;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(183, 110, 121, 0.6);
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* Floating images */
+.floating-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255,182,193,0.8), 0 0 30px rgba(255,105,180,0.6);
+    filter: drop-shadow(0 0 10px rgba(255,192,203,0.8));
+    position: absolute;
+    z-index: 1; /* behind text */
+    pointer-events: none;
+    opacity: 1;
+    transition: transform 0.5s;
+}
+
+/* Sparkle effect on images */
+.floating-img::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    border-radius: 20px;
+    pointer-events: none;
+    animation: sparkle 3s infinite;
+}
+
+@keyframes sparkle {
+    0%,100% { opacity: 0.5; transform: scale(1);}
+    50% { opacity: 0; transform: scale(1.1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>My Papiii❤️</h1>
+
+<div class="letter">
+Made with love, just for you<br><br>
+My loveeeee😝💋,<br>
+Aaaaaaaah duanziiiiiii😂……if some months ago told me that I would be making this rn I would have laughed really hard at it 😂. You are a sight to behold in countless ways🤗 and the joy that comes with being part of most of your experiences is inexplicable. Love is an emotion that I have felt in different ways being with you…..you are a lot of things (my best of friends, my 911, my cutie pie, my superbike boo boo😂, my msupa, my lovely handsome maaaaaaan😍😍❤️!!!!!!!, my papiiiii🥹❤️😘 Ikn duanzi still stands out😝) and for being all of that and much more is something that I'm eternally grateful for😭🫂. I want you to know and always remember that I love you to infinity and beyond. You deserve lots of good things and I hope that they come your way in good time. If fate were to repeat itself I would choose this over and over again 😭💋. I hope that there are more moments and memories to cherish and live with you😝❤️. However everything plays out I hope we never fall out 😘. I LOVE YOUUUUUU❤️❤️💋💋🫂.<br><br>
+Forever yours❤️❤️.
+</div>
+
+<button onclick="showLove()">I love you papi ❤️❤️</button>
+
+<p id="loveMessage" class="hidden">
+You are my always. My forever. My handsome mannnnn!!!!🥹❤️
+</p>
+
+<audio id="bgMusic" loop>
+<source src="young-and-beautiful.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<!-- Floating Hearts -->
+<script>
+for (let i = 0; i < 25; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<!-- Floating Images in Continuous Wavy Motion with scale and sparkle -->
+<script>
+const images = [
+    'image1.jpg',
+    'image2.jpg',
+    'image3.jpg',
+    'image4.jpg',
+    'image5.jpg',
+    'image6.jpg'
+];
+
+const screenHeight = window.innerHeight;
+const screenWidth = window.innerWidth;
+
+images.forEach(src => {
+    let img = document.createElement('img');
+    img.src = src;
+    img.className = 'floating-img';
+    document.body.appendChild(img);
+
+    // Random start position
+    let x = Math.random() * (screenWidth - 120);
+    let y = screenHeight + Math.random() * 200;
+    let angle = Math.random() * Math.PI * 2;
+    let speed = 0.3 + Math.random() * 0.7;
+    let scaleAngle = 0;
+
+    function animate() {
+        y -= speed;
+        angle += 0.02;
+        scaleAngle += 0.01;
+        let scale = 0.9 + Math.sin(scaleAngle) * 0.1;
+        img.style.top = y + 'px';
+        img.style.left = x + Math.sin(angle) * 30 + 'px';
+        img.style.transform = `rotate(${Math.sin(angle)*15}deg) scale(${scale})`;
+
+        if (y < -150) {
+            y = screenHeight + Math.random() * 100;
+            x = Math.random() * (screenWidth - 120);
+        }
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+});
+</script>
+
+<!-- Music & Button -->
+<script>
+let musicPlayed = false;
+document.body.addEventListener('click', function() {
+    if (!musicPlayed) {
+        document.getElementById("bgMusic").play();
+        musicPlayed = true;
+    }
+});
+
+function showLove() {
+    document.getElementById("loveMessage").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
